@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <div class="sidebar" data-color="danger" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+      <app-sidebar></app-sidebar>
+      <div class="sidebar-background"></div>
+  </div>
+  <div class="main-panel">
+      <div class="container-fluid" style="font-size: 25px; margin-top: 25px; margin-bottom: -55px; ">
+          <nav aria-label="breadcrumb">
+              <ol class="breadcrumb" style="background-color: transparent !important;">
+                  <li class="breadcrumb-item"><a style="font-weight: 400 !important;">{{ currentIndex | titlecase }}</a></li>
+                  <li class="breadcrumb-item"><a style="font-weight: 400 !important;">{{ currentPage | titlecase }}</a></li>
+              </ol>
+          </nav>
+      </div>
+      <router-outlet></router-outlet>
+  </div>
+</div>
