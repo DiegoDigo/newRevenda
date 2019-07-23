@@ -1,7 +1,9 @@
+import { RevendaComponent } from './../../shared/modal/revenda/revenda.component';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { RevendaService } from './revenda.service';
 import * as fileSaver from 'file-saver';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-revendas',
@@ -26,7 +28,8 @@ export class RevendasComponent implements OnInit {
 
   @ViewChild('paginator', { read: MatPaginator, static: true }) paginator: MatPaginator;
 
-  constructor(private revendaService: RevendaService) { }
+  constructor(private revendaService: RevendaService,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -42,14 +45,21 @@ export class RevendasComponent implements OnInit {
 
 
   fazerDownload = (revenda: any) => {
-    this.revendaService.download('606961db-a891-4f37-b4f7-aea10532fa0d')
+    this.revendaService.download(revenda.id)
       .subscribe(
         data => this.downloadFile(data),
         () => console.log('Error downloading the file.'),
         () => console.log('OK'));
   }
 
-  openDialog = (detail) => { }
+  openDialog = () => {
+    const dialogRef = this.dialog.open(RevendaComponent, {
+      height: '305px',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().pipe(take(1)).subscribe();
+  }
 
   downloadFile = (data: any, filename?: string) => {
     const blob = new Blob([data], { type: 'text/csv; charset=utf-8' });

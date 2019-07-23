@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="">
+        <div class="card-header card-header-warning">
+          <p class="card-category">Nova Revenda</p>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="formulario" (ngSubmit)="submit()">
+            <div class="form-row">
+              <div class="col-sm-12 col-md-6">
+                <label for="exampleInputEmail1">Licença</label>
+                <app-error-field [control]="formulario.get('license')" label="Licença"></app-error-field>
+                <input type="text" class="form-control no-border" formControlName="license">
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <label for="exampleInputEmail1">Name</label>
+                <app-error-field [control]="formulario.get('name')" label="Name"></app-error-field>
+                <input type="text" class="form-control no-border" formControlName="name">
+              </div>
+            </div>
+            <div class="row" style="margin-top: 3%;">
+              <div class="col-sm-6  pull-right">
+                <button type="submit" class="btn btn-md">Criar</button>
+              </div>
+              <div class="col-sm-6 pull-left">
+                <button class="btn btn-md " (click)="close()">Sair</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

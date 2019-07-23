@@ -4,27 +4,38 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MatProgressSpinnerModule, MatIconModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
-import { BaseFormComponent } from './base-form/base-form.component';
+import { RevendaComponent } from './modal/revenda/revenda.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ErrorFieldComponent } from './error-field/error-field.component';
 
 
 
 @NgModule({
   declarations: [
-    SidebarComponent
-
+    SidebarComponent,
+    RevendaComponent,
+    ErrorFieldComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     MatProgressSpinnerModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     SidebarComponent,
     MatProgressSpinnerModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    RevendaComponent,
+    ErrorFieldComponent,
+
+  ],
+  entryComponents: [
+    RevendaComponent
   ],
 })
 export class SharedModule { }

@@ -17,4 +17,12 @@ export class RevendaService {
   download = (id: string) => {
     return this.http.get(`${this.url}/config/${id}`, {responseType: 'text'}).pipe(take(1));
   }
+
+  create = (revenda: any) => {
+    return this.http.post(`${this.url}/revenda/register`, revenda.value).pipe(take(1));
+  }
+
+  licenseExist = (license: string) => {
+    return this.http.get(`${this.url}/revenda/license/${Number(license)}`);
+  }
 }
