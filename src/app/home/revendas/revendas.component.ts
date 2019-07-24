@@ -45,7 +45,7 @@ export class RevendasComponent implements OnInit {
 
   openDialog = () => {
     const dialogRef = this.dialog.open(RevendaComponent, {
-      height: '305px',
+      height: '326px',
       width: '600px',
     });
 

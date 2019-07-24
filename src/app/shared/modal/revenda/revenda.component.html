@@ -3,28 +3,28 @@
     <div class="col-md-12">
       <div class="">
         <div class="card-header card-header-warning">
-          <p class="card-category">Nova Revenda</p>
+          <p class="card-category" style="font-weight: 800">Nova Revenda</p>
         </div>
         <div class="card-body">
           <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
             <div class="form-row">
               <div class="col-sm-12 col-md-6">
                 <label for="exampleInputEmail1">Licença</label>
-                <app-error-field [control]="formulario.get('license')" label="Licença"></app-error-field>
                 <input type="text" class="form-control no-border" formControlName="license">
+                <app-error-field [control]="formulario.get('license')" label="Licença"></app-error-field>
               </div>
               <div class="col-sm-12 col-md-6">
                 <label for="exampleInputEmail1">Name</label>
-                <app-error-field [control]="formulario.get('name')" label="Name"></app-error-field>
                 <input type="text" class="form-control no-border" formControlName="name">
+                <app-error-field [control]="formulario.get('name')" label="Name"></app-error-field>
               </div>
             </div>
-            <div class="row" style="margin-top: 3%;">
-              <div class="col-sm-6  pull-right">
-                <button type="submit" class="btn btn-md">Criar</button>
+            <div class="row" style="padding-top: 10px; ">
+              <div class="col-sm-6  col-md-3">
+                <button type="submit" class="btn btn-md btn-primary">Criar</button>
               </div>
-              <div class="col-sm-6 pull-left">
-                <button class="btn btn-md " (click)="close()">Sair</button>
+              <div class="col-sm-6 col-md-3 offset-md-6">
+                  <button  class="btn btn-md btn-transparent" (click)="close()">Sair</button>
               </div>
             </div>
           </form>
