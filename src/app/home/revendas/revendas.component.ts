@@ -17,22 +17,16 @@ export class RevendasComponent implements OnInit {
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = ['license', 'name', 'actions'];
 
-  sort;
-  @ViewChild(MatSort, { static: true }) set content(content: ElementRef) {
-    this.sort = content;
-    if (this.sort) {
-      this.listData.sort = this.sort;
-    }
-  }
 
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  @ViewChild('paginator', { read: MatPaginator, static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   constructor(private revendaService: RevendaService,
-              private dialog: MatDialog) { }
+    private dialog: MatDialog) { }
 
   ngOnInit() {
-      this.loadRevendas();
+    this.loadRevendas();
 
   }
 
@@ -63,11 +57,14 @@ export class RevendasComponent implements OnInit {
     fileSaver.saveAs(blob, this.FILENAME);
   }
 
-loadRevendas = () =>{
-  this.revendaService.getAllRevendas().subscribe((array: any[]) => {
-    setTimeout(() => this.listData.paginator = this.paginator);
-    this.listData = new MatTableDataSource(array);
-  });
-}
+  loadRevendas = () => {
+    this.revendaService.getAllRevendas().subscribe((array: any[]) => {
+      setTimeout(() => {
+        this.listData.paginator = this.paginator;
+        this.listData.sort = this.sort;
+      });
+      this.listData = new MatTableDataSource(array);
+    });
+  }
 
 }
