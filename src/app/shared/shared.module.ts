@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RevendaComponent } from './modal/revenda/revenda.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorFieldComponent } from './error-field/error-field.component';
+import { ConfigurationComponent } from './modal/configuration/configuration.component';
+import { MatStepperModule } from '@angular/material/stepper';
 
 
 
@@ -14,7 +16,8 @@ import { ErrorFieldComponent } from './error-field/error-field.component';
   declarations: [
     SidebarComponent,
     RevendaComponent,
-    ErrorFieldComponent
+    ErrorFieldComponent,
+    ConfigurationComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,8 @@ import { ErrorFieldComponent } from './error-field/error-field.component';
     HttpClientModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatStepperModule
   ],
   exports: [
     SidebarComponent,
@@ -32,10 +36,12 @@ import { ErrorFieldComponent } from './error-field/error-field.component';
     MatIconModule,
     RevendaComponent,
     ErrorFieldComponent,
-
+    ConfigurationComponent,
+    MatStepperModule
   ],
   entryComponents: [
-    RevendaComponent
+    RevendaComponent,
+    ConfigurationComponent
   ],
 })
 export class SharedModule { }

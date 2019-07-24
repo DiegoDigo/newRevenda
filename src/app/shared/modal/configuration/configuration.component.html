@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="">
+        <div class="card-header card-header-warning">
+          <p class="card-category" style="font-weight: 800">Configuraçao da revenda {{x}}</p>
+        </div>
+        <div class="card-body">
+          <mat-horizontal-stepper labelPosition="bottom" #stepper>
+            <mat-step [stepControl]="formulario.get('api')">
+              <form [formGroup]="formulario.get('api')">
+                <ng-template matStepLabel>Configuração api portal</ng-template>
+                <div class="form-row">
+                  <div class="col-sm-12 col-md-6">
+                    <label for="exampleInputEmail1">Porta</label>
+                    <input type="text" class="form-control no-border" formControlName="port">
+                  </div>
+                </div>
+                <div>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="formulario.get('web')">
+              <form [formGroup]="formulario.get('web')">
+                <ng-template matStepLabel>Configuração portal web</ng-template>
+                <div class="form-row">
+                  <div class="col-sm-12 col-md-6">
+                    <label for="exampleInputEmail1">Portal</label>
+                    <input type="text" class="form-control no-border" formControlName="port">
+
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <label for="exampleInputEmail1">host</label>
+                    <input type="text" class="form-control no-border" formControlName="host">
+
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <label for="exampleInputEmail1">hostApi</label>
+                    <input type="text" class="form-control no-border" formControlName="hostApi">
+
+                  </div>
+                </div>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Done</ng-template>
+              You are now done.
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

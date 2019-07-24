@@ -13,7 +13,7 @@
           <div class="card-body table-responsive" *ngIf="listData; else loading">
             <div class="row">
               <div class="col-md-6 ml-auto" style="padding-top: 10px;">
-                <button (click)="openDialog(row)" color="primary" mat-raised-button matTooltip="ver detalhe"
+                <button (click)="openDialog()" color="primary" mat-raised-button matTooltip="ver detalhe"
                   matTooltipPosition="below">+</button>
               </div>
               <div class="col-md-6 ml-auto">
@@ -42,7 +42,7 @@
               <ng-container matColumnDef="actions">
                 <mat-header-cell *matHeaderCellDef></mat-header-cell>
                 <mat-cell *matCellDef="let row">
-                  <button (click)="openDialog(row)" color="primary" mat-icon-button matTooltip="ver detalhe"
+                  <button (click)="openDialogConfig(row)" color="primary" mat-icon-button matTooltip="ver detalhe"
                     matTooltipPosition="above">
                     <mat-icon>
                       how_to_reg

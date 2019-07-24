@@ -4,6 +4,7 @@ import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/m
 import { RevendaService } from './revenda.service';
 import * as fileSaver from 'file-saver';
 import { take } from 'rxjs/operators';
+import { ConfigurationComponent } from 'src/app/shared/modal/configuration/configuration.component';
 
 @Component({
   selector: 'app-revendas',
@@ -50,6 +51,16 @@ export class RevendasComponent implements OnInit {
     });
 
     dialogRef.afterClosed().pipe(take(1)).subscribe(() => this.loadRevendas());
+  }
+
+  openDialogConfig = (detail) => {
+    const dialogRef = this.dialog.open(ConfigurationComponent, {
+      height: '500px',
+      width: '1000px',
+      data: { revenda: detail }
+    });
+
+    dialogRef.afterClosed().pipe(take(1)).subscribe();
   }
 
   downloadFile = (data: any) => {
