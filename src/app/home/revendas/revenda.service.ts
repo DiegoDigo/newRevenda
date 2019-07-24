@@ -15,7 +15,11 @@ export class RevendaService {
   }
 
   download = (id: string) => {
-    return this.http.get(`${this.url}/config/${id}`, {responseType: 'text'}).pipe(take(1));
+    return this.http.get(`${this.url}/config/download/${id}`, {responseType: 'text'}).pipe(take(1));
+  }
+
+  createConfig = (config: any) => {
+    return this.http.post(`${this.url}/config`, config).pipe(take(1));
   }
 
   create = (revenda: any) => {
@@ -23,6 +27,10 @@ export class RevendaService {
   }
 
   licenseExist = (license: string) => {
-    return this.http.get(`${this.url}/revenda/license/${Number(license)}`);
+    return this.http.get(`${this.url}/revenda/license/${Number(license)}`).pipe(take(1));
+  }
+
+  getConfiByIdRevenda = (id: string) => {
+    return this.http.get(`${this.url}/config/${id}`).pipe(take(1));
   }
 }

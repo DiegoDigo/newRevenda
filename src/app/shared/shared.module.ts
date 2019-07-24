@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorFieldComponent } from './error-field/error-field.component';
 import { ConfigurationComponent } from './modal/configuration/configuration.component';
 import { MatStepperModule } from '@angular/material/stepper';
+import { DetailComponent } from './modal/detail/detail.component';
 
 
 
@@ -17,7 +18,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     SidebarComponent,
     RevendaComponent,
     ErrorFieldComponent,
-    ConfigurationComponent
+    ConfigurationComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { MatStepperModule } from '@angular/material/stepper';
   ],
   entryComponents: [
     RevendaComponent,
-    ConfigurationComponent
+    ConfigurationComponent,
+    DetailComponent
   ],
 })
 export class SharedModule { }

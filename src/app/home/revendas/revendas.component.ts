@@ -5,6 +5,7 @@ import { RevendaService } from './revenda.service';
 import * as fileSaver from 'file-saver';
 import { take } from 'rxjs/operators';
 import { ConfigurationComponent } from 'src/app/shared/modal/configuration/configuration.component';
+import { DetailComponent } from 'src/app/shared/modal/detail/detail.component';
 
 @Component({
   selector: 'app-revendas',
@@ -55,7 +56,17 @@ export class RevendasComponent implements OnInit {
 
   openDialogConfig = (detail) => {
     const dialogRef = this.dialog.open(ConfigurationComponent, {
-      height: '500px',
+      height: '600px',
+      width: '1000px',
+      data: { revenda: detail }
+    });
+
+    dialogRef.afterClosed().pipe(take(1)).subscribe();
+  }
+
+  openDialogDetails = (detail) => {
+    const dialogRef = this.dialog.open(DetailComponent, {
+      height: '600px',
       width: '1000px',
       data: { revenda: detail }
     });

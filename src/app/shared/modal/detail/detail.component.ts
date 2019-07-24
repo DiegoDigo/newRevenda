@@ -1,35 +1,39 @@
-import { RevendaService } from './../../../home/revendas/revenda.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
 import { BaseFormComponent } from '../../base-form/base-form.component';
+import { FormBuilder, Validators } from '@angular/forms';
+import { RevendaService } from 'src/app/home/revendas/revenda.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-  selector: 'app-configuration',
-  templateUrl: './configuration.component.html',
-  styleUrls: ['./configuration.component.scss']
+  selector: 'app-detail',
+  templateUrl: './detail.component.html',
+  styleUrls: ['./detail.component.scss']
 })
-export class ConfigurationComponent extends BaseFormComponent implements OnInit {
+export class DetailComponent extends BaseFormComponent implements OnInit {
 
-  public x: string;
+  public license: string;
+  public name: string;
 
   constructor(private formBuilder: FormBuilder,
               private revendaService: RevendaService,
               @Inject(MAT_DIALOG_DATA) public data: any,
-              public dialogRef: MatDialogRef<ConfigurationComponent>) { super(); }
+              public dialogRef: MatDialogRef<DetailComponent>) { super(); }
 
   ngOnInit() {
 
-    this.x = this.data.revenda.name;
+    this.name = this.data.revenda.name;
+    this.license = this.data.revenda.license;
 
     this.formulario = this.formBuilder.group({
       fila: this.formBuilder.group({
+        id: [null, [Validators.maxLength(50), Validators.required]],
         username: [null, [Validators.maxLength(50), Validators.required]],
         password: [null, [Validators.maxLength(50), Validators.required]],
         portPainel: [null, Validators.required],
         portTcp: [null, Validators.required]
       }),
       database: this.formBuilder.group({
+        id: [null, [Validators.maxLength(50), Validators.required]],
         url: [null, [Validators.maxLength(50)]],
         username: [null, [Validators.maxLength(50), Validators.required]],
         password: [null, [Validators.maxLength(50), Validators.required]],
@@ -37,9 +41,11 @@ export class ConfigurationComponent extends BaseFormComponent implements OnInit 
         port: [null, [Validators.maxLength(4), Validators.required]],
       }),
       api: this.formBuilder.group({
+        id: [null, [Validators.maxLength(50), Validators.required]],
         port: [null, [Validators.maxLength(4), Validators.required]],
       }),
       web: this.formBuilder.group({
+        id: [null, [Validators.maxLength(50), Validators.required]],
         hostApi: [null, [Validators.maxLength(50), Validators.required]],
         host: [null, [Validators.maxLength(50), Validators.required]],
         port: [null, [Validators.maxLength(4), Validators.required]],
@@ -51,7 +57,8 @@ export class ConfigurationComponent extends BaseFormComponent implements OnInit 
       })
     });
 
-    this.loadRevenda();
+    this.findConfig(this.data);
+
   }
 
   close = () => {
@@ -64,11 +71,45 @@ export class ConfigurationComponent extends BaseFormComponent implements OnInit 
   }
 
 
-  loadRevenda = () => {
+  findConfig = (data: any) => {
+    console.log(data.revenda.id);
+    this.revendaService.getConfiByIdRevenda(data.revenda.id).subscribe((success: any) => { console.log(success) ;this.loadRevenda(success);});
+  }
+
+  loadRevenda = (data: any) => {
     this.formulario.get('revenda').patchValue({
-      id: this.data.revenda.id,
-      license: this.data.revenda.license,
-      name: this.data.revenda.name
+      id: data.revenda.id,
+      license: data.revenda.license,
+      name: data.revenda.name
+    });
+
+    this.formulario.get('fila').patchValue({
+      id: data.fila.id,
+      username: data.fila.username,
+      password: data.fila.password,
+      portPainel: data.fila.portPainel,
+      portTcp: data.fila.portTcp
+    });
+    this.formulario.get('database').patchValue({
+        id: data.database.id,
+        url: data.database.url,
+        username: data.database.username,
+        password: data.database.password,
+        tablenName: data.database.tablenName,
+        port: data.database.port
+    });
+
+    this.formulario.get('api').patchValue({
+      id: data.api.id,
+      port: data.api.port,
+    });
+
+    this.formulario.get('web').patchValue({
+        id: data.web.id,
+        hostApi: data.web.hostApi,
+        host: data.web.host,
+        port: data.web.port,
     });
   }
+
 }
