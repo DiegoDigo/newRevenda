@@ -32,11 +32,8 @@ export class RevendasComponent implements OnInit {
               private dialog: MatDialog) { }
 
   ngOnInit() {
+      this.loadRevendas();
 
-    this.revendaService.getAllRevendas().subscribe((array: any[]) => {
-      setTimeout(() => this.listData.paginator = this.paginator);
-      this.listData = new MatTableDataSource(array);
-    });
   }
 
   applyFilter(filterValue: string) {
@@ -58,12 +55,19 @@ export class RevendasComponent implements OnInit {
       width: '600px',
     });
 
-    dialogRef.afterClosed().pipe(take(1)).subscribe();
+    dialogRef.afterClosed().pipe(take(1)).subscribe(() => this.loadRevendas());
   }
 
-  downloadFile = (data: any, filename?: string) => {
+  downloadFile = (data: any) => {
     const blob = new Blob([data], { type: 'text/csv; charset=utf-8' });
     fileSaver.saveAs(blob, this.FILENAME);
   }
+
+loadRevendas = () =>{
+  this.revendaService.getAllRevendas().subscribe((array: any[]) => {
+    setTimeout(() => this.listData.paginator = this.paginator);
+    this.listData = new MatTableDataSource(array);
+  });
+}
 
 }
