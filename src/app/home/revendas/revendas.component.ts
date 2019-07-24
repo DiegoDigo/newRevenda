@@ -23,7 +23,7 @@ export class RevendasComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   constructor(private revendaService: RevendaService,
-    private dialog: MatDialog) { }
+              private dialog: MatDialog) { }
 
   ngOnInit() {
     this.loadRevendas();

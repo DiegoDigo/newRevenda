@@ -23,12 +23,12 @@ export class RevendaComponent extends BaseFormComponent implements OnInit {
   ngOnInit() {
 
     this.formulario = this.formBuilder.group({
-      license: [null, [Validators.required]],
+      license: [null, [Validators.required, Validators.maxLength(4), Validators.pattern('[0-9]{4}')]],
       name: [null, [Validators.required]]
     });
 
     this.formulario.get('license').statusChanges.pipe(
-      take(30000),
+      take(3000),
       switchMap(status => status === 'VALID' ? this.revendaService.licenseExist(this.formulario.get('license').value) : empty())
     ).subscribe((dados: any) => {
       if (dados) {
