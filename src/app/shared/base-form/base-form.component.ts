@@ -9,9 +9,9 @@ export abstract class BaseFormComponent implements OnInit {
 
   formulario: FormGroup;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   abstract submit();
 
@@ -51,6 +51,5 @@ export abstract class BaseFormComponent implements OnInit {
     };
 
   }
-
 
 }

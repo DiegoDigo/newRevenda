@@ -4,6 +4,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { BaseFormComponent } from '../../base-form/base-form.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
+
 @Component({
   selector: 'app-configuration',
   templateUrl: './configuration.component.html',
@@ -52,6 +53,7 @@ export class ConfigurationComponent extends BaseFormComponent implements OnInit 
     });
 
     this.loadRevenda();
+
   }
 
   close = () => {
@@ -70,5 +72,12 @@ export class ConfigurationComponent extends BaseFormComponent implements OnInit 
       license: this.data.revenda.license,
       name: this.data.revenda.name
     });
+  }
+
+  check = () => {
+    return this.formulario.get('fila').invalid ||
+     this.formulario.get('web').invalid ||
+     this.formulario.get('api').invalid ||
+     this.formulario.get('database').invalid;
   }
 }

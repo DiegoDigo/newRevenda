@@ -13,7 +13,7 @@
                 <div class="form-row">
                   <div class="col-sm-12 col-md-6 form-group">
                     <label for="exampleInputEmail1">Porta</label>
-                    <input type="text" class="form-control no-border" formControlName="port" placeholder="ex: 9000">
+                    <input type="text" class="form-control no-border" formControlName="port" placeholder="ex: 9000" required>
                     <app-error-field [control]="formulario.get('api').get('port')" label="porta"></app-error-field>
                   </div>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="form-row">
                   <div class="col-sm-12 col-md-6 form-group">
                     <label for="exampleInputEmail1">Portal</label>
-                    <input type="text" class="form-control no-border" formControlName="port"  placeholder="ex: 80">
+                    <input type="text" class="form-control no-border" formControlName="port"  placeholder="ex: 80" required>
                     <app-error-field [control]="formulario.get('web').get('port')" label="porta"></app-error-field>
                   </div>
                   <div class="col-sm-12 col-md-6 form-group">
@@ -91,8 +91,8 @@
                   <div class="row" style="margin-top: 50px; ">
                     <div class="col-sm-12">
                       <div>
-                          <button mat-button matStepperPrevious class="btn btn-transparent">Voltar</button>
-                          <button mat-button matStepperNext class="btn btn-primary">Próximo</button>
+                          <button mat-button matStepperPrevious class="btn btn-transparent"  >Voltar</button>
+                          <button mat-button matStepperNext class="btn btn-primary" >Próximo</button>
                       </div>
                     </div>
                   </div>
@@ -146,7 +146,7 @@
               </mat-step>
             <mat-step>
               <ng-template matStepLabel>Done</ng-template>
-              <div class="container">
+              <div class="container" *ngIf="!check()" >
                 <div class="row">
                   <div class="col" style="text-align: center; margin-top: 25px; margin-bottom: 25px">
                     <div style="margin: 2%" >
@@ -154,14 +154,24 @@
                     </div>
                     <h2 class="subtext">Cadastro Finalizado!</h2>
                     <button mat-button (click)="onSubmit()"  class="btn btn-success">Finalizar</button>
-                    <!-- <button mat-button (click)="stepper.reset()" class="btn btn-info">Resetar</button> -->
                   </div>
                 </div>
               </div>
               <div>
-                <!-- <button mat-button matStepperPrevious class="btn btn-transparent">Voltar</button>
-                <button mat-button (click)="close()" class="btn btn-info">Sair</button> -->
               </div>
+              <div class="container" *ngIf="check()" >
+                  <div class="row">
+                    <div class="col" style="text-align: center; margin-top: 25px; margin-bottom: 25px">
+                      <div style="margin: 2%" >
+                        <img class ="img-reponsive" src="assets/img/warning.png" width="17%" height="5%"/>
+                      </div>
+                      <h2 class="subtext">Encontramos error reveja os campos</h2>
+                      <button mat-button matStepperPrevious class="btn btn-transparent">Corrigir</button>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                </div>
             </mat-step>
           </mat-horizontal-stepper>
 

@@ -8,6 +8,7 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { RevendaService } from './home/revendas/revenda.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 registerLocaleData(localePt);
 
@@ -25,6 +26,10 @@ registerLocaleData(localePt);
     {
       provide: LOCALE_ID,
       useValue: 'pt-BR'
+    },
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { showError: true }
     },
     RevendaService
   ],
