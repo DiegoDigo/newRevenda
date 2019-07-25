@@ -15,6 +15,7 @@ import { DetailComponent } from 'src/app/shared/modal/detail/detail.component';
 export class RevendasComponent implements OnInit {
 
   private readonly FILENAME = 'docker-compose.yml';
+  public disabled: boolean = false;
 
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = ['license', 'name', 'actions'];
@@ -61,7 +62,7 @@ export class RevendasComponent implements OnInit {
       data: { revenda: detail }
     });
 
-    dialogRef.afterClosed().pipe(take(1)).subscribe();
+    dialogRef.afterClosed().pipe(take(1)).subscribe(() => this.loadRevendas());
   }
 
   openDialogDetails = (detail) => {
@@ -85,6 +86,7 @@ export class RevendasComponent implements OnInit {
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
       });
+      console.log(array);
       this.listData = new MatTableDataSource(array);
     });
   }

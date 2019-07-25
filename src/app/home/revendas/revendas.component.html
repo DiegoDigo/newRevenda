@@ -25,7 +25,7 @@
               </div>
             </div>
             <table mat-table [dataSource]="listData" matSort class="table table-hover ">
-
+              <p>{{listData}}</p>
               <ng-container matColumnDef="license">
                 <th mat-header-cell *matHeaderCellDef class="text-warning" mat-sort-header>License
                 </th>
@@ -42,20 +42,19 @@
               <ng-container matColumnDef="actions">
                 <mat-header-cell *matHeaderCellDef></mat-header-cell>
                 <mat-cell *matCellDef="let row">
-                  <button (click)="openDialogConfig(row)" color="primary" mat-icon-button matTooltip="ver detalhe"
-                    matTooltipPosition="above">
+                  <button (click)="openDialogConfig(row)" color="primary" mat-icon-button matTooltip="Configurar" matTooltipPosition="above"  [disabled]="row.configured" >
                     <mat-icon>
-                      how_to_reg
+                      settings
                     </mat-icon>
                   </button>
-                  <button (click)="fazerDownload(row)" color="primary" mat-icon-button matTooltip="download arquivo yml"
-                    matTooltipPosition="above">
+                  <button (click)="fazerDownload(row)" color="primary" mat-icon-button matTooltip="Download arquivo yml"
+                    matTooltipPosition="above" [disabled]="!row.configured">
                     <mat-icon>
                       cloud_download
                     </mat-icon>
                   </button>
-                  <button (click)="openDialogDetails(row)" color="primary" mat-icon-button matTooltip="ver detalhe"
-                    matTooltipPosition="above">
+                  <button (click)="openDialogDetails(row)" color="primary" mat-icon-button matTooltip="Ver detalhe"
+                    matTooltipPosition="above" [disabled]="!row.configured">
                     <mat-icon>
                       remove_red_eye
                     </mat-icon>
