@@ -12,16 +12,18 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class ConfigurationComponent extends BaseFormComponent implements OnInit {
 
-  public x: string;
+  public license: string;
+  public name: string;
 
   constructor(private formBuilder: FormBuilder,
-    private revendaService: RevendaService,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<ConfigurationComponent>) { super(); }
+              private revendaService: RevendaService,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              public dialogRef: MatDialogRef<ConfigurationComponent>) { super(); }
 
   ngOnInit() {
 
-    this.x = this.data.revenda.name;
+    this.name = this.data.revenda.name;
+    this.license = this.data.revenda.license;
 
     this.formulario = this.formBuilder.group({
       fila: this.formBuilder.group({

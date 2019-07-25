@@ -57,7 +57,7 @@ export class RevendasComponent implements OnInit {
 
   openDialogConfig = (detail) => {
     const dialogRef = this.dialog.open(ConfigurationComponent, {
-      height: '600px',
+      height: '650px',
       width: '1000px',
       data: { revenda: detail }
     });
@@ -67,7 +67,7 @@ export class RevendasComponent implements OnInit {
 
   openDialogDetails = (detail) => {
     const dialogRef = this.dialog.open(DetailComponent, {
-      height: '600px',
+      height: '650px',
       width: '1000px',
       data: { revenda: detail }
     });
