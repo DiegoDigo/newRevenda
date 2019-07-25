@@ -149,15 +149,18 @@
               <div class="container">
                 <div class="row">
                   <div class="col" style="text-align: center; margin-top: 25px; margin-bottom: 25px">
-                    <h2>Cadastro Finalizado!</h2>
+                    <div style="margin: 2%" >
+                      <img class ="img-reponsive" src="assets/img/like.png" width="17%" height="5%"/>
+                    </div>
+                    <h2 class="subtext">Cadastro Finalizado!</h2>
                     <button mat-button (click)="onSubmit()"  class="btn btn-success">Finalizar</button>
-                    <button mat-button (click)="stepper.reset()" class="btn btn-info">Resetar</button>
+                    <!-- <button mat-button (click)="stepper.reset()" class="btn btn-info">Resetar</button> -->
                   </div>
                 </div>
               </div>
               <div>
-                <button mat-button matStepperPrevious class="btn btn-transparent">Voltar</button>
-                <button mat-button (click)="close()" class="btn btn-info">Sair</button>
+                <!-- <button mat-button matStepperPrevious class="btn btn-transparent">Voltar</button>
+                <button mat-button (click)="close()" class="btn btn-info">Sair</button> -->
               </div>
             </mat-step>
           </mat-horizontal-stepper>

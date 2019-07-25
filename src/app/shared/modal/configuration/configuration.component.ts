@@ -14,9 +14,9 @@ export class ConfigurationComponent extends BaseFormComponent implements OnInit 
   public x: string;
 
   constructor(private formBuilder: FormBuilder,
-              private revendaService: RevendaService,
-              @Inject(MAT_DIALOG_DATA) public data: any,
-              public dialogRef: MatDialogRef<ConfigurationComponent>) { super(); }
+    private revendaService: RevendaService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<ConfigurationComponent>) { super(); }
 
   ngOnInit() {
 
@@ -26,27 +26,27 @@ export class ConfigurationComponent extends BaseFormComponent implements OnInit 
       fila: this.formBuilder.group({
         username: [null, [Validators.maxLength(50), Validators.required]],
         password: [null, [Validators.maxLength(50), Validators.required]],
-        portPainel: [null, Validators.required],
-        portTcp: [null, Validators.required]
+        portPainel: [null, [Validators.required, Validators.pattern('[0-9]{4}'), Validators.maxLength(4)]],
+        portTcp: [null, [Validators.required, Validators.pattern('[0-9]{5}'), Validators.maxLength(5)]]
       }),
       database: this.formBuilder.group({
         url: [null, [Validators.maxLength(50)]],
         username: [null, [Validators.maxLength(50), Validators.required]],
         password: [null, [Validators.maxLength(50), Validators.required]],
         tablenName: [null, [Validators.maxLength(50), Validators.required]],
-        port: [null, [Validators.maxLength(4), Validators.required]],
+        port: [null, [Validators.maxLength(4), Validators.required, Validators.pattern('[0-9]{4}')]],
       }),
       api: this.formBuilder.group({
-        port: [null, [Validators.maxLength(4), Validators.required]],
+        port: [null, [Validators.maxLength(4), Validators.required, Validators.pattern('[0-9]{4}')]],
       }),
       web: this.formBuilder.group({
-        hostApi: [null, [Validators.maxLength(50), Validators.required]],
-        host: [null, [Validators.maxLength(50), Validators.required]],
-        port: [null, [Validators.maxLength(4), Validators.required]],
+        hostApi: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[a-zA-Z]+\.com\.br\/[a-zA-z0-9]+')]],
+        host: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[a-zA-Z]+\.com\.br')]],
+        port: [null, [Validators.maxLength(4), Validators.required, Validators.pattern('[0-9]{2,4}')]],
       }),
       revenda: this.formBuilder.group({
         id: [null, [Validators.maxLength(50), Validators.required]],
-        license: [null, [Validators.maxLength(50), Validators.required]],
+        license: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[0-9]{4}')]],
         name: [null, [Validators.maxLength(50), Validators.required]],
       })
     });
