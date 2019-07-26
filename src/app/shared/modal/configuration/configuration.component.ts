@@ -43,8 +43,8 @@ export class ConfigurationComponent extends BaseFormComponent implements OnInit 
         port: [null, [Validators.maxLength(4), Validators.required, Validators.pattern('[0-9]{4}')]],
       }),
       web: this.formBuilder.group({
-        hostApi: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[a-zA-Z]+\.com\.br\/[a-zA-z0-9]+')]],
-        host: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[a-zA-Z]+\.com\.br')]],
+        hostApi: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[a-zA-Z.]+\.com\.br\/[a-zA-z0-9]+')]],
+        host: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[a-zA-Z.]+\.com\.br')]],
         port: [null, [Validators.maxLength(4), Validators.required, Validators.pattern('[0-9]{2,4}')]],
       }),
       revenda: this.formBuilder.group({

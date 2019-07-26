@@ -1,12 +1,11 @@
 @ECHO OFF
-IF %1.==. No1
-
+IF %1.==. GOTO No1
 
 GOTO deploy
 
-
 :No1
   ECHO Digite a versao.
+  EXIT
 
 :deploy
     ECHO criando imagem.

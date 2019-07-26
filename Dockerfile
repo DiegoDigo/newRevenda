@@ -1,20 +1,13 @@
-FROM node:10-alpine as node
-
+FROM node:alpine AS builder
 WORKDIR /app
-
-ENV API=""
-
-ADD package*.json ./app
-
-RUN npm i
-
-COPY . ./app
-
-RUN ng build --prod --build-optimizer
+ADD package*.json .
+RUN npm set progress=false && npm config set depth 0 && npm cache clean --force && npm install
+COPY . .
+RUN npm run build --prod
 
 
 FROM nginx:alpine
-ENV HOST=""
-COPY --from=node /app/dist/ /usr/share/nginx/html
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=builder /app/dist/revenda/ /usr/share/nginx/html
 ADD nginx.conf /etc/nginx/conf.d/default.conf
 CMD ["nginx", "-g", "daemon off;"]

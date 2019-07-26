@@ -47,8 +47,8 @@ export class DetailComponent extends BaseFormComponent implements OnInit {
       }),
       web: this.formBuilder.group({
         id: [null, [Validators.maxLength(50), Validators.required]],
-        hostApi: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[a-zA-Z]+\.com\.br\/[a-zA-z0-9]+')]],
-        host: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[a-zA-Z]+\.com\.br')]],
+        hostApi: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[a-zA-Z.]+\.com\.br\/[a-zA-z0-9]+')]],
+        host: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[a-zA-Z.]+\.com\.br')]],
         port: [null, [Validators.maxLength(4), Validators.required, Validators.pattern('[0-9]{2,4}')]],
       }),
       revenda: this.formBuilder.group({

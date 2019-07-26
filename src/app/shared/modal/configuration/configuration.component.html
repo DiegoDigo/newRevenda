@@ -10,6 +10,7 @@
             <mat-step [stepControl]="formulario.get('api')">
               <form [formGroup]="formulario.get('api')">
                 <ng-template matStepLabel>Configuração api portal</ng-template>
+                <h3>Configuração portal api</h3>
                 <div class="form-row">
                   <div class="col-sm-12 col-md-6 form-group">
                     <label for="exampleInputEmail1">Porta</label>
@@ -30,6 +31,7 @@
             <mat-step [stepControl]="formulario.get('web')">
               <form [formGroup]="formulario.get('web')">
                 <ng-template matStepLabel>Configuração portal web</ng-template>
+                <h3>Configuração portal web</h3>
                 <div class="form-row">
                   <div class="col-sm-12 col-md-6 form-group">
                     <label for="exampleInputEmail1">Portal</label>
@@ -65,6 +67,7 @@
             <mat-step [stepControl]="formulario.get('fila')">
               <form [formGroup]="formulario.get('fila')">
                 <ng-template matStepLabel>Configuração Fila</ng-template>
+                <h3>Configuração fila</h3>
                 <div class="form-row">
                   <div class="col-sm-12 col-md-6 form-group">
                     <label for="exampleInputEmail1">Username</label>
@@ -109,11 +112,8 @@
             <mat-step [stepControl]="formulario.get('database')">
               <form [formGroup]="formulario.get('database')">
                 <ng-template matStepLabel>Configuração Database</ng-template>
+                <h3>Configuração database</h3>
                 <div class="form-row">
-                  <div class="col-sm-12 col-md-6 form-group">
-                    <label for="exampleInputEmail1">Url</label>
-                    <input type="text" class="form-control no-border" formControlName="url">
-                  </div>
                   <div class="col-sm-12 col-md-6 form-group">
                     <label for="exampleInputEmail1">Username</label>
                     <input type="text" class="form-control no-border" formControlName="username"
@@ -129,7 +129,7 @@
                     </app-error-field>
                   </div>
                   <div class="col-sm-12 col-md-6 form-group">
-                    <label for="exampleInputEmail1">Nome Tabela</label>
+                    <label for="exampleInputEmail1">Nome Banco</label>
                     <input type="text" class="form-control no-border" formControlName="tablenName"
                       placeholder="ex: admin-9999">
                     <app-error-field [control]="formulario.get('database').get('tablenName')" label="Nome Tabela">
