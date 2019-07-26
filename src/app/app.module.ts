@@ -1,14 +1,14 @@
-import { SharedModule } from './shared/shared.module';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import { RevendaService } from './home/revendas/revenda.service';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { NgxMaskModule , IConfig} from 'ngx-mask';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { RevendaService } from './home/revendas/revenda.service';
+import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(localePt);
 
@@ -20,7 +20,8 @@ registerLocaleData(localePt);
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [
     {
@@ -36,3 +37,5 @@ registerLocaleData(localePt);
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

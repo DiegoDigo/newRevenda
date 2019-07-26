@@ -9,6 +9,7 @@ import {
 } from '@angular/material';
 import { DashboardComponent } from './home/dashboard.component';
 import { RevendasComponent } from './revendas/revendas.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { RevendasComponent } from './revendas/revendas.component';
     SharedModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    NgxMaskModule.forRoot()
 
   ],
   exports: [RevendasComponent]

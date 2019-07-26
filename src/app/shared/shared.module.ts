@@ -12,6 +12,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { DetailComponent } from './modal/detail/detail.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 
@@ -33,7 +34,8 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     MatStepperModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [
     SidebarComponent,
