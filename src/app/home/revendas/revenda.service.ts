@@ -33,4 +33,8 @@ export class RevendaService {
   getConfiByIdRevenda = (id: string) => {
     return this.http.get(`${this.url}/config/${id}`).pipe(take(1));
   }
+
+  atualizar = (config: any) => {
+    return this.http.put(`${this.url}/config/atualizar`, config).pipe(take(1));
+  }
 }

@@ -16,7 +16,6 @@ export abstract class BaseFormComponent implements OnInit {
   abstract submit();
 
   onSubmit = () => {
-    console.log(this.formulario);
     if (this.formulario.valid) {
       this.submit();
     } else {

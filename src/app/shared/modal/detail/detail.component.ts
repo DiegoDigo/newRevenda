@@ -15,9 +15,9 @@ export class DetailComponent extends BaseFormComponent implements OnInit {
   public name: string;
 
   constructor(private formBuilder: FormBuilder,
-              private revendaService: RevendaService,
-              @Inject(MAT_DIALOG_DATA) public data: any,
-              public dialogRef: MatDialogRef<DetailComponent>) { super(); }
+    private revendaService: RevendaService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<DetailComponent>) { super(); }
 
   ngOnInit() {
 
@@ -25,13 +25,16 @@ export class DetailComponent extends BaseFormComponent implements OnInit {
     this.license = this.data.revenda.license;
 
     this.formulario = this.formBuilder.group({
+      id: [null, [Validators.maxLength(50), Validators.required]],
       fila: this.formBuilder.group({
+        id: [null, [Validators.maxLength(50), Validators.required]],
         username: [null, [Validators.maxLength(50), Validators.required]],
         password: [null, [Validators.maxLength(50), Validators.required]],
         portPainel: [null, [Validators.required, Validators.pattern('[0-9]{4}'), Validators.maxLength(4)]],
         portTcp: [null, [Validators.required, Validators.pattern('[0-9]{5}'), Validators.maxLength(5)]]
       }),
       database: this.formBuilder.group({
+        id: [null, [Validators.maxLength(50), Validators.required]],
         url: [null, [Validators.maxLength(50)]],
         username: [null, [Validators.maxLength(50), Validators.required]],
         password: [null, [Validators.maxLength(50), Validators.required]],
@@ -39,9 +42,11 @@ export class DetailComponent extends BaseFormComponent implements OnInit {
         port: [null, [Validators.maxLength(4), Validators.required, Validators.pattern('[0-9]{4}')]],
       }),
       api: this.formBuilder.group({
+        id: [null, [Validators.maxLength(50), Validators.required]],
         port: [null, [Validators.maxLength(4), Validators.required, Validators.pattern('[0-9]{4}')]],
       }),
       web: this.formBuilder.group({
+        id: [null, [Validators.maxLength(50), Validators.required]],
         hostApi: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[a-zA-Z]+\.com\.br\/[a-zA-z0-9]+')]],
         host: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[a-zA-Z]+\.com\.br')]],
         port: [null, [Validators.maxLength(4), Validators.required, Validators.pattern('[0-9]{2,4}')]],
@@ -65,19 +70,21 @@ export class DetailComponent extends BaseFormComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.formulario.valueChanges);
-    console.log(this.formulario.value);
-    // this.revendaService.createConfig(this.formulario.value).subscribe(() => this.close());
+    this.revendaService.atualizar(this.formulario.value).subscribe(() => this.close());
   }
 
 
   findConfig = (data: any) => {
-    console.log(data.revenda.id);
     this.revendaService.getConfiByIdRevenda(data.revenda.id)
-      .subscribe((success: any) => { console.log(success); this.loadRevenda(success); });
+      .subscribe((success: any) => this.loadRevenda(success));
   }
 
   loadRevenda = (data: any) => {
+
+    this.formulario.patchValue({
+      id: data.id
+    });
+
     this.formulario.get('revenda').patchValue({
       id: data.revenda.id,
       license: data.revenda.license,

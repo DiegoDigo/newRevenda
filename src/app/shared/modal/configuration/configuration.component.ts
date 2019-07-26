@@ -65,7 +65,6 @@ export class ConfigurationComponent extends BaseFormComponent implements OnInit 
   }
 
   submit() {
-    console.log(this.formulario.value);
     this.revendaService.createConfig(this.formulario.value).subscribe(() => this.close());
   }
 

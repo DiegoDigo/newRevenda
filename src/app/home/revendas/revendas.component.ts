@@ -48,9 +48,7 @@ export class RevendasComponent implements OnInit {
   fazerDownload = (revenda: any) => {
     this.revendaService.download(revenda.id)
       .subscribe(
-        data => this.downloadFile(data),
-        () => console.log('Error downloading the file.'),
-        () => console.log('OK'));
+        data => this.downloadFile(data));
   }
 
   openDialog = () => {
@@ -79,7 +77,7 @@ export class RevendasComponent implements OnInit {
       data: { revenda: detail }
     });
 
-    dialogRef.afterClosed().pipe(take(1)).subscribe();
+    dialogRef.afterClosed().pipe(take(1)).subscribe(() => this.loadRevendas());
   }
 
   downloadFile = (data: any) => {
@@ -93,7 +91,6 @@ export class RevendasComponent implements OnInit {
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
       });
-      console.log(array);
       this.listData = new MatTableDataSource(array);
     });
   }
