@@ -25,7 +25,8 @@
                   </div>
                   <div class="col-sm-12 col-md-6 form-group">
                     <label for="exampleInputEmail1">Cnpj</label>
-                    <input type="text" class="form-control no-border" formControlName="cnpj" [readonly]="true" mask="00.000.000/0000-00">
+                    <input type="text" class="form-control no-border" formControlName="cnpj" [readonly]="true"
+                      mask="00.000.000/0000-00">
                     <app-error-field [control]="formulario.get('revenda').get('cnpj')" label="Cnpj"></app-error-field>
                   </div>
                   <div class="col-sm-12 col-md-6 form-group">
@@ -197,11 +198,20 @@
               <div class="container" *ngIf="!check()">
                 <div class="row">
                   <div class="col" style="text-align: center; margin-top: 25px; margin-bottom: 25px">
-                    <div style="margin: 2%">
-                      <img class="img-reponsive" src="assets/img/edit.png" width="18%" height="5%" />
+                    <div *ngIf="formulario.touched">
+                      <div style="margin: 2%">
+                        <img class="img-reponsive" src="assets/img/edit.png" width="18%" height="5%" />
+                      </div>
+                      <h2 class="subtext">Editar Revenda!</h2>
+                      <button mat-button (click)="onSubmit()" class="btn btn-success">Editar</button>
                     </div>
-                    <h2 class="subtext">Editar Revenda!</h2>
-                    <button mat-button (click)="onSubmit()" class="btn btn-success">Editar</button>
+                    <div *ngIf="!formulario.touched">
+                      <div style="margin: 2%">
+                        <img class="img-reponsive" src="assets/img/query.png" width="18%" height="5%" />
+                      </div>
+                      <h2 class="subtext">Terminou a consulta!</h2>
+                      <button mat-button (click)="close()" class="btn btn-success">Sair</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -213,6 +223,7 @@
                     <div style="margin: 2%">
                       <img class="img-reponsive" src="assets/img/warning.png" width="17%" height="5%" />
                     </div>
+
                     <h2 class="subtext">Encontramos error reveja os campos</h2>
                     <button mat-button matStepperPrevious class="btn btn-transparent">Corrigir</button>
                   </div>

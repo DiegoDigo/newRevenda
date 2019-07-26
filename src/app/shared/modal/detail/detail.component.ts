@@ -57,6 +57,7 @@ export class DetailComponent extends BaseFormComponent implements OnInit {
 
     this.findConfig(this.data);
 
+
   }
 
   close = () => {
@@ -64,8 +65,9 @@ export class DetailComponent extends BaseFormComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.formulario.valueChanges);
     console.log(this.formulario.value);
-    this.revendaService.createConfig(this.formulario.value).subscribe(() => this.close());
+    // this.revendaService.createConfig(this.formulario.value).subscribe(() => this.close());
   }
 
 
