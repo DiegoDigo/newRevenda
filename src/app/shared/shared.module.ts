@@ -10,6 +10,8 @@ import { ErrorFieldComponent } from './error-field/error-field.component';
 import { ConfigurationComponent } from './modal/configuration/configuration.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { DetailComponent } from './modal/detail/detail.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -29,7 +31,9 @@ import { DetailComponent } from './modal/detail/detail.component';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    MatStepperModule
+    MatStepperModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   exports: [
     SidebarComponent,
@@ -39,7 +43,9 @@ import { DetailComponent } from './modal/detail/detail.component';
     RevendaComponent,
     ErrorFieldComponent,
     ConfigurationComponent,
-    MatStepperModule
+    MatStepperModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   entryComponents: [
     RevendaComponent,

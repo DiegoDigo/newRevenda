@@ -49,8 +49,10 @@ export class ConfigurationComponent extends BaseFormComponent implements OnInit 
       }),
       revenda: this.formBuilder.group({
         id: [null, [Validators.maxLength(50), Validators.required]],
-        license: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[0-9]{4}')]],
+        license: [null, [Validators.required, Validators.maxLength(4), Validators.pattern('[0-9]{4}')]],
         name: [null, [Validators.maxLength(50), Validators.required]],
+        environment: [null, Validators.required],
+        cnpj: [null, [Validators.required, Validators.maxLength(15)]]
       })
     });
 
@@ -72,7 +74,9 @@ export class ConfigurationComponent extends BaseFormComponent implements OnInit 
     this.formulario.get('revenda').patchValue({
       id: this.data.revenda.id,
       license: this.data.revenda.license,
-      name: this.data.revenda.name
+      name: this.data.revenda.name,
+      cnpj: this.data.revenda.cnpj,
+      environment: this.data.revenda.environment
     });
   }
 

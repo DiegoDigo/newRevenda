@@ -33,8 +33,9 @@ export abstract class BaseFormComponent implements OnInit {
       const control = this.formulario.get(campo);
       control.markAsTouched();
       control.markAsDirty();
+      control.markAllAsTouched();
       if (control instanceof FormGroup || control instanceof FormArray) {
-        this.sharedError(control)
+        this.sharedError(control);
       }
     });
   }

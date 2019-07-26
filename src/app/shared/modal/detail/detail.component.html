@@ -13,14 +13,27 @@
                 <div class="form-row">
                   <div class="col-sm-12 col-md-6 form-group">
                     <label for="exampleInputEmail1">Licença</label>
-                    <input type="text" class="form-control no-border" formControlName="license" placeholder="ex: 9999" [readonly]="true">
-                    <app-error-field [control]="formulario.get('revenda').get('license')" label="Licença"></app-error-field>
+                    <input type="text" class="form-control no-border" formControlName="license" placeholder="ex: 9999"
+                      [readonly]="true">
+                    <app-error-field [control]="formulario.get('revenda').get('license')" label="Licença">
+                    </app-error-field>
                   </div>
                   <div class="col-sm-12 col-md-6 form-group">
-                      <label for="exampleInputEmail1">Nome</label>
-                      <input type="text" class="form-control no-border" formControlName="name" placeholder="ex: 9999">
-                      <app-error-field [control]="formulario.get('revenda').get('name')" label="Nome"></app-error-field>
-                    </div>
+                    <label for="exampleInputEmail1">Nome</label>
+                    <input type="text" class="form-control no-border" formControlName="name">
+                    <app-error-field [control]="formulario.get('revenda').get('name')" label="Nome"></app-error-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6 form-group">
+                    <label for="exampleInputEmail1">Cnpj</label>
+                    <input type="text" class="form-control no-border" formControlName="cnpj" [readonly]="true">
+                    <app-error-field [control]="formulario.get('revenda').get('cnpj')" label="Cnpj"></app-error-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6 form-group">
+                    <label for="exampleInputEmail1">Ambiente</label>
+                    <input type="text" class="form-control no-border" formControlName="environment" [readonly]="true">
+                    <app-error-field [control]="formulario.get('revenda').get('environment')" label="Ambiente">
+                    </app-error-field>
+                  </div>
                 </div>
                 <div class="row" style="margin-top: 50px; ">
                   <div class="col-sm-12">
@@ -180,34 +193,34 @@
               </form>
             </mat-step>
             <mat-step>
-                <ng-template matStepLabel>Done</ng-template>
-                <div class="container" *ngIf="!check()">
-                  <div class="row">
-                    <div class="col" style="text-align: center; margin-top: 25px; margin-bottom: 25px">
-                      <div style="margin: 2%">
-                        <img class="img-reponsive" src="assets/img/edit.png" width="18%" height="5%" />
-                      </div>
-                      <h2 class="subtext">Editar Revenda!</h2>
-                      <button mat-button (click)="onSubmit()" class="btn btn-success">Editar</button>
+              <ng-template matStepLabel>Done</ng-template>
+              <div class="container" *ngIf="!check()">
+                <div class="row">
+                  <div class="col" style="text-align: center; margin-top: 25px; margin-bottom: 25px">
+                    <div style="margin: 2%">
+                      <img class="img-reponsive" src="assets/img/edit.png" width="18%" height="5%" />
                     </div>
+                    <h2 class="subtext">Editar Revenda!</h2>
+                    <button mat-button (click)="onSubmit()" class="btn btn-success">Editar</button>
                   </div>
                 </div>
-                <div>
-                </div>
-                <div class="container" *ngIf="check()">
-                  <div class="row">
-                    <div class="col" style="text-align: center; margin-top: 25px; margin-bottom: 25px">
-                      <div style="margin: 2%">
-                        <img class="img-reponsive" src="assets/img/warning.png" width="17%" height="5%" />
-                      </div>
-                      <h2 class="subtext">Encontramos error reveja os campos</h2>
-                      <button mat-button matStepperPrevious class="btn btn-transparent">Corrigir</button>
+              </div>
+              <div>
+              </div>
+              <div class="container" *ngIf="check()">
+                <div class="row">
+                  <div class="col" style="text-align: center; margin-top: 25px; margin-bottom: 25px">
+                    <div style="margin: 2%">
+                      <img class="img-reponsive" src="assets/img/warning.png" width="17%" height="5%" />
                     </div>
+                    <h2 class="subtext">Encontramos error reveja os campos</h2>
+                    <button mat-button matStepperPrevious class="btn btn-transparent">Corrigir</button>
                   </div>
                 </div>
-                <div>
-                </div>
-              </mat-step>
+              </div>
+              <div>
+              </div>
+            </mat-step>
           </mat-horizontal-stepper>
 
         </div>

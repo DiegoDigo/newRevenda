@@ -15,9 +15,9 @@ export class DetailComponent extends BaseFormComponent implements OnInit {
   public name: string;
 
   constructor(private formBuilder: FormBuilder,
-    private revendaService: RevendaService,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<DetailComponent>) { super(); }
+              private revendaService: RevendaService,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              public dialogRef: MatDialogRef<DetailComponent>) { super(); }
 
   ngOnInit() {
 
@@ -48,8 +48,10 @@ export class DetailComponent extends BaseFormComponent implements OnInit {
       }),
       revenda: this.formBuilder.group({
         id: [null, [Validators.maxLength(50), Validators.required]],
-        license: [null, [Validators.maxLength(50), Validators.required, Validators.pattern('[0-9]{4}')]],
+        license: [null, [Validators.required, Validators.maxLength(4), Validators.pattern('[0-9]{4}')]],
         name: [null, [Validators.maxLength(50), Validators.required]],
+        environment: [null, Validators.required],
+        cnpj: [null, [Validators.required, Validators.maxLength(15)]]
       })
     });
 
@@ -70,14 +72,16 @@ export class DetailComponent extends BaseFormComponent implements OnInit {
   findConfig = (data: any) => {
     console.log(data.revenda.id);
     this.revendaService.getConfiByIdRevenda(data.revenda.id)
-    .subscribe((success: any) => { console.log(success); this.loadRevenda(success); });
+      .subscribe((success: any) => { console.log(success); this.loadRevenda(success); });
   }
 
   loadRevenda = (data: any) => {
     this.formulario.get('revenda').patchValue({
       id: data.revenda.id,
       license: data.revenda.license,
-      name: data.revenda.name
+      name: data.revenda.name,
+      environment: data.revenda.environment,
+      cnpj: data.revenda.cnpj
     });
 
     this.formulario.get('fila').patchValue({

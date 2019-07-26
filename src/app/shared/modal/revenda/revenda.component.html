@@ -18,13 +18,29 @@
                 <input type="text" class="form-control no-border" formControlName="name">
                 <app-error-field [control]="formulario.get('name')" label="Name"></app-error-field>
               </div>
+              <div class="col-sm-12 col-md-6">
+                <label for="exampleInputEmail1">Cnpj</label>
+                <input type="text" class="form-control no-border" formControlName="cnpj">
+                <app-error-field [control]="formulario.get('cnpj')" label="Cnpj"></app-error-field>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <label for="exampleInputEmail1">Ambiente</label>
+                <mat-select formControlName="environment" class="form-control">
+                  <mat-option *ngFor="let environment of environments" [value]="environment.value">
+                    {{environment.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <app-error-field [control]="formulario.get('environment')" label="Ambiente"></app-error-field>
+
+              </div>
+
             </div>
             <div class="row" style="padding-top: 10px; ">
               <div class="col-sm-6  col-md-3">
                 <button type="submit" class="btn btn-md btn-primary">Criar</button>
               </div>
               <div class="col-sm-6 col-md-3 offset-md-6">
-                  <button  class="btn btn-md btn-transparent" (click)="close()">Sair</button>
+                <button class="btn btn-md btn-transparent" (click)="close()">Sair</button>
               </div>
             </div>
           </form>

@@ -13,6 +13,13 @@ import { empty } from 'rxjs';
 })
 export class RevendaComponent extends BaseFormComponent implements OnInit {
 
+
+  public environments: any[] = [
+    {value: 'DEVELOP', viewValue: 'Desenvolvimento'},
+    {value: 'PRODUCTION', viewValue: 'Produção'},
+    {value: 'QA', viewValue: 'Qualidade (QA)'}
+  ];
+
   constructor(
     public dialogRef: MatDialogRef<RevendaComponent>,
     private revendaService: RevendaService,
@@ -24,7 +31,9 @@ export class RevendaComponent extends BaseFormComponent implements OnInit {
 
     this.formulario = this.formBuilder.group({
       license: [null, [Validators.required, Validators.maxLength(4), Validators.pattern('[0-9]{4}')]],
-      name: [null, [Validators.required]]
+      name: [null, [Validators.required]],
+      environment: [null, Validators.required],
+      cnpj: [null, [Validators.required, Validators.maxLength(15)]]
     });
 
     this.formulario.get('license').statusChanges.pipe(

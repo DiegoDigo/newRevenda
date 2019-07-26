@@ -15,21 +15,28 @@ import { DetailComponent } from 'src/app/shared/modal/detail/detail.component';
 export class RevendasComponent implements OnInit {
 
   private readonly FILENAME = 'docker-compose.yml';
-  public disabled: boolean = false;
+  public disabled = false;
 
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['license', 'name', 'actions'];
+  displayedColumns: string[] = ['license', 'name', 'cnpj', 'ambiente', 'actions'];
 
+
+  private environments: any[] = [
+    { value: 'DEVELOP', viewValue: 'Desenvolvimento' },
+    { value: 'PRODUCTION', viewValue: 'Produção' },
+    { value: 'QA', viewValue: 'Qualidade (QA)' }
+  ];
 
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   constructor(private revendaService: RevendaService,
-              private dialog: MatDialog) { }
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.loadRevendas();
+    this.getEnvironment("DEVELOP");
 
   }
 
@@ -48,7 +55,7 @@ export class RevendasComponent implements OnInit {
 
   openDialog = () => {
     const dialogRef = this.dialog.open(RevendaComponent, {
-      height: '326px',
+      height: '426px',
       width: '600px',
     });
 
@@ -89,6 +96,11 @@ export class RevendasComponent implements OnInit {
       console.log(array);
       this.listData = new MatTableDataSource(array);
     });
+  }
+
+
+  getEnvironment = (environment: string) => {
+    return this.environments.filter(el => el.value === environment)[0].viewValue;
   }
 
 }
