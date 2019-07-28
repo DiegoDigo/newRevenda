@@ -6,6 +6,7 @@ import * as fileSaver from 'file-saver';
 import { take } from 'rxjs/operators';
 import { ConfigurationComponent } from 'src/app/shared/modal/configuration/configuration.component';
 import { DetailComponent } from 'src/app/shared/modal/detail/detail.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-revendas',
@@ -32,11 +33,15 @@ export class RevendasComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   constructor(private revendaService: RevendaService,
-    private dialog: MatDialog) { }
+              private dialog: MatDialog, 
+              private router: Router) { }
 
   ngOnInit() {
-    this.loadRevendas();
-    this.getEnvironment("DEVELOP");
+    if(!localStorage.getItem('token')){
+      this.router.navigate(['']);
+    }else{
+      this.loadRevendas();
+    }
 
   }
 

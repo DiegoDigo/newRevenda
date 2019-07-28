@@ -37,7 +37,8 @@ export class SidebarComponent implements OnInit {
   }
 
   logout = () => {
-      console.log('teste');
+      localStorage.removeItem("token");
+      this.route.navigate([''],{ replaceUrl: true });
   }
 
 

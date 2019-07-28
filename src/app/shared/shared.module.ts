@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule, MatProgressSpinnerModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { RouterModule } from '@angular/router';
@@ -32,6 +33,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
+    MatProgressBarModule,
     MatStepperModule,
     MatFormFieldModule,
     MatSelectModule,
@@ -47,7 +49,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     ConfigurationComponent,
     MatStepperModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressBarModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   entryComponents: [
     RevendaComponent,

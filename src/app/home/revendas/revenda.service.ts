@@ -11,7 +11,6 @@ export class RevendaService {
   constructor(private http: HttpClient) { }
 
   getAllRevendas = () => {
-    console.log(environment.BASE_URL);
     return this.http.get(`${this.url}/revenda/all`).pipe(take(1));
   }
 

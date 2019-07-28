@@ -2,11 +2,12 @@ import { RevendasComponent } from './revendas/revendas.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './home/dashboard.component';
+import { LoginComponent } from '../authentication/login/login.component';
 
 const routes: Routes = [
   {
     path: '', component: DashboardComponent, children: [
-      {path: '', component: RevendasComponent}
+      { path: '', component: RevendasComponent }
     ]
   }
 ];

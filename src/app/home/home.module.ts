@@ -30,7 +30,7 @@ import { NgxMaskModule } from 'ngx-mask';
     SharedModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule,
+    MatPaginatorModule,    
     NgxMaskModule.forRoot()
 
   ],
