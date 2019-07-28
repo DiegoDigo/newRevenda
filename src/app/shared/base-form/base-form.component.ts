@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormArray } from '@angular/forms';
+import { Injectable, OnInit } from '@angular/core';
+import { FormArray, FormGroup } from '@angular/forms';
 
-@Component({
-  selector: 'app-base-form',
-  template: '<div></div>'
-})
+@Injectable ()
 export abstract class BaseFormComponent implements OnInit {
 
   formulario: FormGroup;

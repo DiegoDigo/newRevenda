@@ -1,18 +1,18 @@
-import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { MatProgressSpinnerModule, MatIconModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
-import { RevendaComponent } from './modal/revenda/revenda.component';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
+import { RouterModule } from '@angular/router';
+import { NgxMaskModule } from 'ngx-mask';
 import { ErrorFieldComponent } from './error-field/error-field.component';
 import { ConfigurationComponent } from './modal/configuration/configuration.component';
-import { MatStepperModule } from '@angular/material/stepper';
 import { DetailComponent } from './modal/detail/detail.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
-import { NgxMaskModule } from 'ngx-mask';
+import { RevendaComponent } from './modal/revenda/revenda.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 
