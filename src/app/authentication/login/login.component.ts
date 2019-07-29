@@ -12,21 +12,26 @@ import { AuthenticationService } from '../authentication.service';
 export class LoginComponent extends BaseFormComponent implements OnInit {
 
 
-  public login: Boolean = true;
-  public loging: Boolean = false;
+  public login = true;
+  public loging = false;
 
 
   constructor(private formBuilder: FormBuilder,
-    private router: Router,
-    private authetication: AuthenticationService) {
-    super()
+              private router: Router,
+              private authetication: AuthenticationService) {
+    super();
   }
 
   ngOnInit() {
-    this.formulario = this.formBuilder.group({
-      username: [null, [Validators.required, Validators.maxLength(50)]],
-      password: [null, [Validators.required, Validators.maxLength(50)]]
-    });
+
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['home']);
+    } else {
+      this.formulario = this.formBuilder.group({
+        username: [null, [Validators.required, Validators.maxLength(50)]],
+        password: [null, [Validators.required, Validators.maxLength(50)]]
+      });
+    }
   }
 
 
@@ -34,10 +39,9 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
     this.authetication.login(this.formulario.value)
       .subscribe((response: any) => {
         localStorage.setItem('token', response.token);
-        this.loging = !this.loging;
-        this.router.navigate(["home"]);
-      }), (error) => {
-        console.log(error)
+        this.router.navigate(['home']);
+      }), error => {
+        console.log(error);
       };
 
   }

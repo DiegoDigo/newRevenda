@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-12 text-center" style="padding: 10px;">
-                    <h3 class=" box-title m-b-10" style="text-align: center">
+                    <h3 class="m-b-10 title" style="text-align: center">
                         Nova Revenda
                     </h3>
                 </div>
@@ -14,16 +14,15 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Usuario</label>
                             <app-error-field [control]="formulario.get('username')" label="Usuario"></app-error-field>
-                            <input type="text" class="form-control no-border" formControlName="username">                            
+                            <input type="text" class="form-control no-border" formControlName="username">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Senha</label>
                             <app-error-field [control]="formulario.get('password')" label="Senha"></app-error-field>
-                            <input type="password" class="form-control no-border" formControlName="password">  
+                            <input type="password" class="form-control no-border" formControlName="password">
                         </div>
                         <div class="form-group" style="margin-top: 4vh;">
-                            <mat-progress-bar *ngIf="loging" mode="indeterminate"></mat-progress-bar>
-                            <button *ngIf="login" type="submit"
+                            <button type="submit"
                                 class="btn btn-primary btn-block btn-lg">Acessar</button>
                         </div>
                     </form>
