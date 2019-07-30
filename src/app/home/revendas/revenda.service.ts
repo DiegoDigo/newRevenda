@@ -10,12 +10,14 @@ export class RevendaService {
 
   constructor(private http: HttpClient) { }
 
+
+
   getAllRevendas = () => {
     return this.http.get(`${this.url}/revenda/all`).pipe(take(1));
   }
 
   download = (id: string) => {
-    return this.http.get(`${this.url}/config/download/${id}`, {responseType: 'text'}).pipe(take(1));
+    return this.http.get(`${this.url}/config/download/${id}`, {responseType: 'text' }).pipe(take(1));
   }
 
   createConfig = (config: any) => {

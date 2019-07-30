@@ -41,7 +41,7 @@ registerLocaleData(localePt);
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true
-  },
+    },
     RevendaService,
     AuthenticationService
   ],

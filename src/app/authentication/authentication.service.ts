@@ -11,6 +11,6 @@ export class AuthenticationService {
   private readonly url = environment.BASE_URL;
 
   login = (login: any) => {
-    return this.http.post(`${this.url}/login`, login).pipe(take(1));
+    return this.http.post(`${this.url}/user/signin`, login).pipe(take(1));
   }
 }

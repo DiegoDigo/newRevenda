@@ -17,8 +17,8 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
-              private router: Router,
-              private authetication: AuthenticationService) {
+    private router: Router,
+    private authetication: AuthenticationService) {
     super();
   }
 
@@ -40,9 +40,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
       .subscribe((response: any) => {
         localStorage.setItem('token', response.token);
         this.router.navigate(['home']);
-      }), error => {
-        console.log(error);
-      };
+      });
 
   }
 

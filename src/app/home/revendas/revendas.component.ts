@@ -33,13 +33,13 @@ export class RevendasComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   constructor(private revendaService: RevendaService,
-              private dialog: MatDialog, 
-              private router: Router) { }
+    private dialog: MatDialog,
+    private router: Router) { }
 
   ngOnInit() {
-    if(!localStorage.getItem('token')){
+    if (!localStorage.getItem('token')) {
       this.router.navigate(['']);
-    }else{
+    } else {
       this.loadRevendas();
     }
 
@@ -51,9 +51,7 @@ export class RevendasComponent implements OnInit {
 
 
   fazerDownload = (revenda: any) => {
-    this.revendaService.download(revenda.id)
-      .subscribe(
-        data => this.downloadFile(data));
+    this.revendaService.download(revenda.id).subscribe(data => this.downloadFile(data));
   }
 
   openDialog = () => {
