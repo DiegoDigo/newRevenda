@@ -8,7 +8,7 @@ GOTO deploy
   EXIT
 
 :deploy
-    ECHO deploy ng build --prod
+    ECHO deploy
     call ng build --prod
     ECHO criando imagem.
     call docker build -t digodiego/web-revenda:%1 .

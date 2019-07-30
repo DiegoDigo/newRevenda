@@ -14,6 +14,7 @@ import { ConfigurationComponent } from './modal/configuration/configuration.comp
 import { DetailComponent } from './modal/detail/detail.component';
 import { RevendaComponent } from './modal/revenda/revenda.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AuthenticationModule } from '../authentication/authentication.module';
 
 
 
@@ -52,7 +53,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MatSelectModule,
     MatProgressBarModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     RevendaComponent,
