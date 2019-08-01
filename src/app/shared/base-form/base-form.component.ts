@@ -1,14 +1,14 @@
 import { Injectable, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
+import { Utility } from '../utility';
 
-@Injectable ()
-export abstract class BaseFormComponent implements OnInit {
+
+@Injectable()
+export abstract class BaseFormComponent {
 
   formulario: FormGroup;
 
   constructor() { }
-
-  ngOnInit() { }
 
   abstract submit();
 
@@ -48,5 +48,11 @@ export abstract class BaseFormComponent implements OnInit {
     };
 
   }
+
+  showNotification(type: string, title: string, msg: string, icon: string) {
+    Utility.notification(type, title, msg, icon);
+  }
+
+
 
 }

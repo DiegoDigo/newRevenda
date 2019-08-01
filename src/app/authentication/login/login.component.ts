@@ -40,6 +40,8 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
       .subscribe((response: any) => {
         localStorage.setItem('token', response.token);
         this.router.navigate(['home']);
+      }, () => {
+        this.showNotification('danger', 'Ops..', 'Parece que o houve um erro no usuario ou senha', 'error_outline');
       });
 
   }
