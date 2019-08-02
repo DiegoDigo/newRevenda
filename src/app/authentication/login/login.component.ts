@@ -23,15 +23,10 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    if (localStorage.getItem('token')) {
-      this.router.navigate(['home']);
-    } else {
-      this.formulario = this.formBuilder.group({
-        username: [null, [Validators.required, Validators.maxLength(50)]],
-        password: [null, [Validators.required, Validators.maxLength(50)]]
-      });
-    }
+    this.formulario = this.formBuilder.group({
+      username: [null, [Validators.required, Validators.maxLength(50)]],
+      password: [null, [Validators.required, Validators.maxLength(50)]]
+    });
   }
 
 

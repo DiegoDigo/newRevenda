@@ -13,6 +13,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticationService } from './authentication/authentication.service';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { AuthGuard } from './guards/auth.guard';
 
 registerLocaleData(localePt);
 
@@ -43,7 +44,8 @@ registerLocaleData(localePt);
       multi: true
     },
     RevendaService,
-    AuthenticationService
+    AuthenticationService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
