@@ -5,7 +5,6 @@ import * as jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 
 
-
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanLoad, Route, Router, UrlSegment } from '@angular/router';
 import { Observable } from 'rxjs';
-import * as jwt_decode from 'jwt-decode';
+
 
 @Injectable()
 export class AuthGuard implements CanLoad {
