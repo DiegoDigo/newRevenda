@@ -1,0 +1,27 @@
+sudo: required
+language: node_js
+
+node_js:
+   - node
+
+services:
+  - docker
+
+env:
+  global:
+
+    - COMMIT=${TRAVIS_COMMIT::7}
+
+
+before_script:
+   - npm install -g --silent @angular/cli
+
+script:
+   - ng build --prod
+
+after_success:
+  - docker login -u digodiego -p @mesma1012
+  - export IMAGE_NAME=digodiego/web-revenda
+  - docker build -t $IMAGE_NAME:$COMMIT -t $IMAGE_NAME:latest .
+  - docker push $IMAGE_NAME:latest
+  - docker push $IMAGE_NAME:$COMMIT
